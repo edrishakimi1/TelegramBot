@@ -20,7 +20,7 @@ object AppleBot extends App {
 
     def getKamerat = kamerat
 
-
+  }
 
   val bot = new BasicBot() {
 
@@ -146,4 +146,4 @@ object AppleBot extends App {
     println("Started")
   }
  }
-}
+
