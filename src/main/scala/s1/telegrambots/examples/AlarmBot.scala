@@ -19,7 +19,7 @@ object AppleBot extends App {
     def getHalkaisija = halkaisija
 
     def getKamerat = kamerat
-  }
+
 
 
   val bot = new BasicBot() {
@@ -50,7 +50,7 @@ object AppleBot extends App {
     phones += (new Phone("iPhone 11 Pro Max", 900, 256, 6.4, 3))
 
     def tervehdi(msg: Message) = {
-      "Hei " + getUserFirstName(msg) + ". Olet ostamassa puhelinta? Kerrotko vielä budjetin?"
+      "Hei " + getUserFirstName(msg) + "! Tervetuloa Applen puhelinkauppaan. Mikä on budjettisi puhelinta varten? (Vastaa käskyllä /budjetti)"
     }
 
     def budjetti(message: Message): String = {
@@ -67,7 +67,7 @@ object AppleBot extends App {
           }
         }
       }
-    "Mites muisti?"
+    "Paljonko muistia haluat puhelimella olevan? 128/256/512/1024 (Vastaa käskyllä /muisti)"
     }
 
     def muisti(message: Message) = {
@@ -84,7 +84,7 @@ object AppleBot extends App {
           }
         }
       }
-    "Mites näytön halkaisija?"
+    "Minkä kokoisen näytön haluat? 5.4/5.8/6.1/6.4/6.7 (Vastaa käskyllä /halkaisija)"
     }
 
 
@@ -102,7 +102,7 @@ object AppleBot extends App {
           }
         }
       }
-    "Mites kameroiden määrä?"
+    "Montako kameraa haluat? 1/2/3 (Vastaa käskyllä /kamera)"
     }
 
 
@@ -120,7 +120,7 @@ object AppleBot extends App {
           }
         }
       }
-    "Löytyi! Nyt kirjoita /puhelimet"
+    "Löytyi! Käskyllä /puhelimet saat hakukriteereihisi sopivat puhelimet esille."
     }
 
     def puhelimet(message: Message) = {
@@ -146,4 +146,4 @@ object AppleBot extends App {
     println("Started")
   }
  }
-
+}
