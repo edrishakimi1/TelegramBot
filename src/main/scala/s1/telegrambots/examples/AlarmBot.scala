@@ -10,6 +10,8 @@ object AppleBot extends App {
 
     override def toString = nimi
 
+    def getNimi = nimi
+
     def getMuisti = muisti
 
     def getHinta = hinta
@@ -17,15 +19,16 @@ object AppleBot extends App {
     def getHalkaisija = halkaisija
 
     def getKamerat = kamerat
-
-    val iPhone11 = new Phone("iPhone 11", 400,128, 6.1, 2)
-
-    val iPhone13ProMax = new Phone("iPhone 13 Pro Max", 1600, 1024, 6.7, 3)
-
-    var phones = Buffer[Phone](iPhone11, iPhone13ProMax)
+  }
 
 
   val bot = new BasicBot() {
+
+    val iPhone13ProMax = new Phone("iPhone 13 Pro Max", 1600, 1024, 6.7, 3)
+
+    val iPhone11 = new Phone("iPhone 11", 400,128, 6.1, 2)
+
+    var phones = Buffer[Phone](iPhone11, iPhone13ProMax)
 
     def tervehdi(msg: Message) = {
       "Hei " + getUserFirstName(msg) + ". Olet ostamassa puhelinta? Kerrotko vielä budjetin?"
@@ -98,10 +101,20 @@ object AppleBot extends App {
           }
         }
       }
-    "Löytyi!"
+    "Löytyi! Nyt kirjoita /puhelimet"
     }
 
+    def puhelimet(message: Message) = {
+      phones.toString
+    }
+
+
     this.command("terve", tervehdi)
+    this.command("budjetti", budjetti)
+    this.command("muisti", muisti)
+    this.command("halkaisija", halkaisija)
+    this.command("kamerat", kamerat)
+    this.command("puhelimet", puhelimet)
 
 
     // Lopuksi Botti pitää vielä saada käyntiin
@@ -109,5 +122,5 @@ object AppleBot extends App {
 
     println("Started")
   }
-  }
  }
+
