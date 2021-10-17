@@ -67,7 +67,7 @@ object AppleBot extends App {
           }
         }
       }
-    "Paljonko muistia haluat puhelimella olevan? 128/256/512/1024 (Vastaa käskyllä /muisti)"
+    "Paljonko muistia haluat puhelimella vähintään olevan? 128/256/512/1024 (Vastaa käskyllä /muisti)"
     }
 
     def muisti(message: Message) = {
@@ -78,13 +78,13 @@ object AppleBot extends App {
         case None => println("Sinun täytyy antaa numeroita!")
         case Some(luku) => {
           for (puhelin <- phones) {
-            if (puhelin.getMuisti != luku) {
+            if (puhelin.getMuisti < luku) {
               phones -= puhelin
             }
           }
         }
       }
-    "Minkä kokoisen näytön haluat? 5.4/5.8/6.1/6.4/6.7 (Vastaa käskyllä /halkaisija)"
+    "Minkä kokoisen näytön haluat vähintään? 5.4/5.8/6.1/6.4/6.7 (Vastaa käskyllä /halkaisija)"
     }
 
 
@@ -96,13 +96,13 @@ object AppleBot extends App {
         case None => println("Sinun täytyy antaa numeroita!")
         case Some(luku) => {
           for (puhelin <- phones) {
-            if (puhelin.getHalkaisija != luku) {
+            if (puhelin.getHalkaisija < luku) {
               phones -= puhelin
             }
           }
         }
       }
-    "Montako kameraa haluat? 1/2/3 (Vastaa käskyllä /kamera)"
+    "Montako kameraa haluat vähintään? 1/2/3 (Vastaa käskyllä /kamerat)"
     }
 
 
@@ -114,7 +114,7 @@ object AppleBot extends App {
         case None => println("Sinun täytyy antaa numeroita!")
         case Some(luku) => {
           for (puhelin <- phones) {
-            if (puhelin.getKamerat != luku) {
+            if (puhelin.getKamerat < luku) {
               phones -= puhelin
             }
           }
