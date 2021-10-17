@@ -8,7 +8,7 @@ object AppleBot extends App {
 
   class Phone(nimi: String, val hinta: Int, val muisti: Int, val halkaisija: Double, val kamerat: Int) {
 
-    override def toString = nimi
+    //override def toString = nimi
 
     def getNimi = nimi
 
@@ -24,11 +24,30 @@ object AppleBot extends App {
 
   val bot = new BasicBot() {
 
-    val iPhone13ProMax = new Phone("iPhone 13 Pro Max", 1600, 1024, 6.7, 3)
 
-    val iPhone11 = new Phone("iPhone 11", 400,128, 6.1, 2)
+    var phones = Buffer[Phone]()
 
-    var phones = Buffer[Phone](iPhone11, iPhone13ProMax)
+    phones += (new Phone("iPhone 13 Pro Max", 1600, 1024, 6.7, 3))
+
+    phones += (new Phone("iPhone 13 Pro", 1200,512, 6.1, 3))
+
+    phones += (new Phone("iPhone 13 Mini", 900,256, 5.4, 2))
+
+    phones += (new Phone("iPhone 13", 1100, 256, 6.1, 3))
+
+    phones += (new Phone("iPhone 12", 600, 128, 6.1, 2))
+
+    phones += (new Phone("iPhone 12 Mini", 600, 256, 5.4, 2))
+
+    phones += (new Phone("iPhone 12 Pro", 800, 512, 6.1, 3))
+
+    phones += (new Phone("iPhone 12 Pro Max", 1200, 1024, 6.7, 3))
+
+    phones += (new Phone("iPhone 11", 400,128, 6.1, 2))
+
+    phones += (new Phone("iPhone 11 Pro", 600, 128, 5.8, 3))
+
+    phones += (new Phone("iPhone 11 Pro Max", 900, 256, 6.4, 3))
 
     def tervehdi(msg: Message) = {
       "Hei " + getUserFirstName(msg) + ". Olet ostamassa puhelinta? Kerrotko vielä budjetin?"
@@ -105,7 +124,11 @@ object AppleBot extends App {
     }
 
     def puhelimet(message: Message) = {
-      phones.toString
+      var tulos: String = "Hakukriteereihisi sopivat puhelimet ovat:\n"
+      for (puhelin <- phones) {
+        tulos += s"${puhelin.getNimi}\n"
+      }
+      tulos
     }
 
 
