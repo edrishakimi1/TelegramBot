@@ -1,7 +1,7 @@
 package s1.telegrambots.examples
 
 import scala.collection.mutable.Buffer
-import com.bot4s.telegram.models.User
+//import com.bot4s.telegram.models.User
 import s1.telegrambots.BasicBot
 
 object AppleBot extends App {
@@ -58,16 +58,16 @@ object AppleBot extends App {
       val summa = util.Try(getString(message).toInt).toOption
 
       summa match {
-        case None => println("Sinun täytyy antaa numeroita!")
+        case None => "Sinun täytyy antaa numeroita!"
         case Some(luku) => {
           for (puhelin <- phones) {
             if (puhelin.getHinta > luku) {
               phones -= puhelin
             }
           }
+          "Paljonko muistia haluat puhelimella vähintään olevan? 128/256/512/1024 (Vastaa käskyllä /muisti)"
         }
       }
-    "Paljonko muistia haluat puhelimella vähintään olevan? 128/256/512/1024 (Vastaa käskyllä /muisti)"
     }
 
     def muisti(message: Message) = {
@@ -75,16 +75,16 @@ object AppleBot extends App {
       val summa = util.Try(getString(message).toInt).toOption
 
       summa match {
-        case None => println("Sinun täytyy antaa numeroita!")
+        case None => "Sinun täytyy antaa numeroita!"
         case Some(luku) => {
           for (puhelin <- phones) {
             if (puhelin.getMuisti < luku) {
               phones -= puhelin
             }
           }
+          "Minkä kokoisen näytön haluat vähintään? 5.4/5.8/6.1/6.4/6.7 (Vastaa käskyllä /halkaisija)"
         }
       }
-    "Minkä kokoisen näytön haluat vähintään? 5.4/5.8/6.1/6.4/6.7 (Vastaa käskyllä /halkaisija)"
     }
 
 
@@ -93,16 +93,16 @@ object AppleBot extends App {
       val summa = util.Try(getString(message).toDouble).toOption
 
       summa match {
-        case None => println("Sinun täytyy antaa numeroita!")
+        case None => "Sinun täytyy antaa numeroita!"
         case Some(luku) => {
           for (puhelin <- phones) {
             if (puhelin.getHalkaisija < luku) {
               phones -= puhelin
             }
           }
+          "Montako kameraa haluat vähintään? 1/2/3 (Vastaa käskyllä /kamerat)"
         }
       }
-    "Montako kameraa haluat vähintään? 1/2/3 (Vastaa käskyllä /kamerat)"
     }
 
 
@@ -111,16 +111,16 @@ object AppleBot extends App {
       val summa = util.Try(getString(message).toInt).toOption
 
       summa match {
-        case None => println("Sinun täytyy antaa numeroita!")
+        case None => "Sinun täytyy antaa numeroita!"
         case Some(luku) => {
           for (puhelin <- phones) {
             if (puhelin.getKamerat < luku) {
               phones -= puhelin
             }
           }
+          "Löytyi! Käskyllä /puhelimet saat hakukriteereihisi sopivat puhelimet esille."
         }
       }
-    "Löytyi! Käskyllä /puhelimet saat hakukriteereihisi sopivat puhelimet esille."
     }
 
     def puhelimet(message: Message) = {
